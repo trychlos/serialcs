@@ -1,0 +1,54 @@
+ SerialCS - README
+
+ Summary
+ =======
+ 
+   SerialCS
+   Rationale
+   The server
+   The client
+
+-----------------------------------------------------------------------
+ SerialCS
+ ========
+
+ SerialCS is a client/server package which let the client talk with a
+ serial port through the server, without closing the serial connection
+ between each exchange. 
+
+-----------------------------------------------------------------------
+ Rationale
+ =========
+
+ When working on NanoWatchdog, I wanted talk with the Arduino board
+ from the PC, and I first test with the arduino-serial program [1]. 
+ But I soonly felt into the "auto-reset" feature of the Nano, 
+ which reset the board each time the connection is opened.
+ So the idea here is to have the server keep the connection to the
+ serial bus opened, while the user interact with it through the client.
+ This work is based on client/server examples [2].
+
+ [1] https://github.com/todbot/arduino-serial
+ (2] http://xmodulo.com/how-to-write-simple-tcp-server-and-client-in-perl.html
+-----------------------------------------------------------------------
+ The server
+ ==========
+
+ The server manages two communication streams:
+ - with the client through a TCP socket:
+ - with the serial bus.
+
+ The principe is that commands sent by the client are redirected to
+ the constantly opened serial bus, and all that is read from the serial
+ bus is forwarded back to the client.
+
+-----------------------------------------------------------------------
+ The client
+ ==========
+
+ The client is a simple command-line application which takes commands 
+ from its input, send them to the server, and displays on its output
+ all that is sent back by the server.
+
+-----------------------------------------------------------------------
+ P. Wieser - Created on 2015, may 24th
