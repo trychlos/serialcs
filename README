@@ -16,6 +16,9 @@
  serial port through the server, without closing the serial connection
  between each exchange. 
 
+ This package is primarily available from
+ https://github.com/trychlos/serialcs.
+
 -----------------------------------------------------------------------
  Rationale
  =========
@@ -52,3 +55,4 @@
 
 -----------------------------------------------------------------------
  P. Wieser - Created on 2015, may 24th
+             Updated on 2015, june 1st
